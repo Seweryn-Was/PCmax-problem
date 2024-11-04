@@ -34,14 +34,17 @@ int main() {
 
     Timer timer; 
     system("cls");
-    Data data("example_data.txt");
+    std::string filename = "example_data.txt";
+    Data data = Data();
+    data.generate(filename);
+    data.readFromFile(filename);
     data.displayData(); 
     
     timer.start();
-    cout<<procesory(data.m, data.processes)<<"\n";
+    cout << "Cmax : "<< procesory(data.m, data.processes) << "\n";
     timer.stop(); 
 
     std::cout<<"Execution time(ms): " << std::setprecision(10) <<timer.elapsedMilliseconds()<<"\n"; 
-
+    std::cin.get(); 
     return 0;
 }

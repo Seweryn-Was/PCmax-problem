@@ -19,3 +19,6 @@ n = 7 <br>
 processes = [5, 5, 7, 7, 4, 4, 3] <br> 
 - number of processors<br>
 m = 2<br>
+
+## Milestones
+#### Greedy algorithm 19.10.2024
