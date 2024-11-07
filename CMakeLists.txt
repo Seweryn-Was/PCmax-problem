@@ -8,3 +8,5 @@ project(Cmax)
 add_executable(Cmax main.cpp) 
 
 target_include_directories(Cmax PUBLIC "include") 
+
+file(COPY ${CMAKE_SOURCE_DIR}/res DESTINATION ${CMAKE_BINARY_DIR})
