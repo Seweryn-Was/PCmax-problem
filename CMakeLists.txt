@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 project(Cmax)
 
-add_executable(Cmax main.cpp) 
+add_executable(Cmax main.cpp "include/geneticAlgorithm.h" ) 
 
 target_include_directories(Cmax PUBLIC "include") 
 
