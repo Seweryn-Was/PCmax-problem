@@ -1,0 +1,3 @@
+C:/Dokumenty/optymalizacja_kombinatoryczna/PCmax-problem/cmake-build-debug/CMakeFiles/Cmax.dir
+C:/Dokumenty/optymalizacja_kombinatoryczna/PCmax-problem/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Dokumenty/optymalizacja_kombinatoryczna/PCmax-problem/cmake-build-debug/CMakeFiles/rebuild_cache.dir

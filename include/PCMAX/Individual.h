@@ -227,6 +227,7 @@ public:
     
 
     friend class Population;
+    int fitness_score = 0;
 private:
     Individual(std::vector<int> genSequence, int fitness_score)
         : genSequence(genSequence), fitness_score(fitness_score) {}
@@ -239,7 +240,6 @@ private:
     static std::vector<int> fitnessCryteria;
     std::unordered_map<int, int> cpuTimes;
     static int cpuNum;
-    int fitness_score = 0;
 
 };
 

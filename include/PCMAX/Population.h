@@ -21,8 +21,8 @@ struct Cpu {
 
 class Population {
 public:
-    Population(int populationSize, int generationsNum, int cpuNum, const std::vector<int>& processes_times, const std::string& fileToSaveBestIndividual)
-        :individuals(populationSize), cpuNum(cpuNum), generationsNum(generationsNum) {
+    Population(int populationSize, int durationTime, int cpuNum, const std::vector<int>& processes_times, const std::string& fileToSaveBestIndividual, Individual& bestIndividual)
+        :individuals(populationSize), cpuNum(cpuNum), durationTime(durationTime) {
 
         createProcessesVector(processes_times); 
 
@@ -36,15 +36,15 @@ public:
             individuals[i] = createIndividualPermutation();
         }
         bestEver = individuals[0]; 
-        printBestInPopulation(0); 
+        //printBestInPopulation(0);
 
 
-        std::cout << "<==Starting Algorithm==>\n"; 
+        //std::cout << "<==Starting Algorithm==>\n";
         startGeneticAlgorithm();
+        bestIndividual = bestEver;
+        //bestEver.print();
 
-        bestEver.print(); 
-
-        bestEver.saveToFileIfGreater(fileToSaveBestIndividual);
+        //bestEver.saveToFileIfGreater(fileToSaveBestIndividual);
     }
 
     std::vector<Individual> getIndividuals() {
@@ -55,18 +55,21 @@ private:
     std::vector<Individual> individuals;
     std::vector<Process> processes;
     int cpuNum;
-    int generationsNum;
+    int durationTime;
     Individual bestEver;
 
     std::mt19937 generator;
 
     void startGeneticAlgorithm() {
-        for (int i = 0; i < generationsNum; ++i) {
-            std::cout << "GENERATION: " << i << "\n";
+        pcmax::Timer timer;
+        timer.start();
+        for (int i = 0; timer.elapsedSeconds() < durationTime; ++i) {
+            //std::cout << "GENERATION: " << i << " "<< timer.elapsedSeconds()<<"\n";
             selection(SelectionType::Elitism);
             crossover();
             mutation(0.001);
-            printBestInPopulation(i);
+            timer.stop();
+            //printBestInPopulation(i);
         }
 
         std::sort(individuals.begin(), individuals.end(), [](const Individual& a, const Individual& b) {
@@ -176,7 +179,7 @@ private:
         }
 
 
-        std::cout<< "\tgeneration size: " << individuals.size() << "\n\tavreage cmax:" << sum / individuals.size() << "\n\tbest cmax in generation:" << cmax<< "\n\tbest ever cmax:"<<bestEver.fitness() << "\n\n";
+        //std::cout<< "\tgeneration size: " << individuals.size() << "\n\tavreage cmax:" << sum / individuals.size() << "\n\tbest cmax in generation:" << cmax<< "\n\tbest ever cmax:"<<bestEver.fitness() << "\n\n";
     }
 
     void rouletteSelection() {
